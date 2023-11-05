@@ -40,6 +40,6 @@ function createPhotoCard(image) {
 function createInfoItem(label, value) {
   const infoItem = document.createElement('p');
   infoItem.classList.add('info-item');
-  infoItem.innerHTML = <b>${label}:</b> ${value};
+infoItem.innerHTML = `<b>${label}:</b> ${value}`;
   return infoItem;
 }
