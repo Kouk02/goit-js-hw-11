@@ -6,19 +6,22 @@ body {
     margin: 0;
     padding: 0;
     background-color: #333;
+    /* Темно-сірий фон */
     color: #fff;
 }
 
-/* Стилі для заголовка */
 header {
     background-color: #000;
+    /* Чорний фон заголовка */
     color: #fff;
     padding: 10px;
 }
 
-/* Стилі для форми пошуку */
 .search-form {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .search-form input[type="text"] {
@@ -27,19 +30,37 @@ header {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #444;
+    /* Темно-сірий фон для текстового поля */
     color: #fff;
 }
 
 .search-form button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #fff;
+    /* Білий фон кнопки пошуку */
+    color: #000;
+    /* Чорний текст кнопки */
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     margin-left: 10px;
 }
+::-webkit-scrollbar {
+  width: 12px; /* Ширина скролбару */
+}
 
-/* Стилі для галереї */
+::-webkit-scrollbar-track {
+  background: #333; /* Фон скролбару */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff; /* Колір "ползунка" скролбару */
+  border-radius: 6px; /* Закруглені кути "ползунка" */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc; /* Колір "ползунка" скролбару при наведенні */
+}
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -97,3 +118,62 @@ header {
 // emoji
 
 
+
+//! photo info
+.photo-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-card .info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    opacity: 0;
+}
+
+.photo-card .info p {
+    margin: 20px 0; 
+}
+
+.photo-card:hover .info {
+    transform: translateX(0);
+    opacity: 1;
+}
+//photo info
+
+
+//!scrollbar
+
+::-webkit-scrollbar {
+    width: 12px;
+    /* Ширина скролбару */
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+    /* Фон скролбару */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fff;
+    /* Колір "ползунка" скролбару */
+    border-radius: 6px;
+    /* Закруглені кути "ползунка" */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+    /* Колір "ползунка" скролбару при наведенні */
+}
+//scrollbar

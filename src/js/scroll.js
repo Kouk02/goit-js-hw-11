@@ -4,24 +4,22 @@ import { renderGallery } from './gallery.js';
 const api = new PixabayAPI();
 
 const loadNextImages = async () => {
-  const gallery = document.querySelector('.gallery');
+  if (loading) return; // Якщо завантаження вже в процесі, не робимо нічого
+
   const lastImage = gallery.lastElementChild;
 
   if (lastImage) {
     const lastImageRect = lastImage.getBoundingClientRect();
     if (lastImageRect.bottom <= window.innerHeight) {
+      loading = true; // Позначаємо, що почалося завантаження
       api.page += 1;
       const newImages = await api.fetchPhotos();
-      renderGallery(newImages);
 
-      // Отримай висоту карточки з галереї
-      const { height: cardHeight } = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
+      if (newImages.length > 0) { // Перевірка, чи отримано нові зображення
+        renderGallery(newImages);
+      }
 
-      // Прокрутку вгору робимо плавно
-      window.scrollBy({
-        top: cardHeight * 2,
-        behavior: 'smooth',
-      });
+      loading = false; // Позначаємо, що завантаження завершилося
     }
   }
 };

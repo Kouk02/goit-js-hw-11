@@ -31,8 +31,9 @@ function createPhotoCard(image) {
   img.alt = image.tags;
   img.loading = 'lazy';
 
-  const infoDiv = document.createElement('div');
+ const infoDiv = document.createElement('div');
   infoDiv.classList.add('info');
+  infoDiv.classList.add('hidden');
 
   const likes = createInfoItem('Likes', image.likes);
   const views = createInfoItem('Views', image.views);
