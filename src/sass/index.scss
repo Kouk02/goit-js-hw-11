@@ -1,2 +1,99 @@
 @import './common';
 @import './example';
+//! styles
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Стилі для заголовка */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Стилі для форми пошуку */
+.search-form {
+    display: flex;
+}
+
+.search-form input[type="text"] {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+.search-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+/* Стилі для галереї */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.photo-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #444;
+    color: #fff;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    padding: 10px;
+}
+
+.info-item {
+    margin: 5px 0;
+}
+// styles 
+
+
+//! emoji
+.info-item {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.info-item b::before {
+    content: "\1F60D";
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.info-item:nth-child(2) b::before {
+    content: "\1F440";
+}
+
+.info-item:nth-child(3) b::before {
+    content: "\1F4AC";
+}
+
+.info-item:nth-child(4) b::before {
+    content: "\1F4E4";
+}
+// emoji
+
+

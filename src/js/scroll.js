@@ -14,16 +14,17 @@ const loadNextImages = async () => {
       const newImages = await api.fetchPhotos();
       renderGallery(newImages);
 
-      // Заміни top на 0, щоб прокрутку вгору виконувалася всередині асинхронної функції
+      // Отримай висоту карточки з галереї
+      const { height: cardHeight } = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
+
+      // Прокрутку вгору робимо плавно
       window.scrollBy({
-        top: 0,
+        top: cardHeight * 2,
         behavior: 'smooth',
       });
     }
   }
 };
-
-// Видалити зайвий код, оскільки цей фрагмент не виконується в контексті скрипту
 
 window.addEventListener('scroll', loadNextImages);
 window.addEventListener('load', loadNextImages);

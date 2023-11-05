@@ -1,3 +1,9 @@
+// Описаний в документації
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
+
+
 export function renderGallery(images) {
   const galleryContainer = document.querySelector('.gallery');
 
@@ -7,11 +13,18 @@ export function renderGallery(images) {
     const photoCard = createPhotoCard(image);
     galleryContainer.appendChild(photoCard);
   });
+ 
+  const lightbox = new SimpleLightbox('.photo-card', {
+    captionsData: 'alt',
+  });
+  lightbox.refresh();
 }
 
 function createPhotoCard(image) {
-  const photoCard = document.createElement('div');
+  const photoCard = document.createElement('a'); 
+  photoCard.href = image.largeImageURL; 
   photoCard.classList.add('photo-card');
+  photoCard.setAttribute('data-lightbox', 'gallery'); 
 
   const img = document.createElement('img');
   img.src = image.webformatURL;
