@@ -2,10 +2,12 @@ import { PixabayAPI } from './pixabay-servise.js';
 import { renderGallery } from './gallery.js';
 
 const api = new PixabayAPI();
+let loading = false; // Оголошуємо змінну loading і встановлюємо початкове значення false
 
 const loadNextImages = async () => {
   if (loading) return; // Якщо завантаження вже в процесі, не робимо нічого
 
+  const gallery = document.querySelector('.gallery');
   const lastImage = gallery.lastElementChild;
 
   if (lastImage) {
