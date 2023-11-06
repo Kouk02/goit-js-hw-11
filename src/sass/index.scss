@@ -1,5 +1,6 @@
 @import './common';
 @import './example';
+
 //! styles
 body {
     font-family: Arial, sans-serif;
@@ -44,21 +45,27 @@ header {
     padding: 5px 10px;
     margin-left: 10px;
 }
+
 ::-webkit-scrollbar {
-  width: 12px; /* Ширина скролбару */
+    width: 12px;
+    /* Ширина скролбару */
 }
 
 ::-webkit-scrollbar-track {
-  background: #333; /* Фон скролбару */
+    background: #333;
+    /* Фон скролбару */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fff; /* Колір "ползунка" скролбару */
-  border-radius: 6px; /* Закруглені кути "ползунка" */
+    background: #fff;
+    /* Колір "ползунка" скролбару */
+    border-radius: 6px;
+    /* Закруглені кути "ползунка" */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccc; /* Колір "ползунка" скролбару при наведенні */
+    background: #ccc;
+    /* Колір "ползунка" скролбару при наведенні */
 }
 
 .gallery {
@@ -88,6 +95,7 @@ header {
 .info-item {
     margin: 5px 0;
 }
+
 // styles 
 
 
@@ -115,6 +123,7 @@ header {
 .info-item:nth-child(4) b::before {
     content: "\1F4E4";
 }
+
 // emoji
 
 
@@ -143,13 +152,14 @@ header {
 }
 
 .photo-card .info p {
-    margin: 20px 0; 
+    margin: 20px 0;
 }
 
 .photo-card:hover .info {
     transform: translateX(0);
     opacity: 1;
 }
+
 //photo info
 
 
@@ -176,4 +186,5 @@ header {
     background: #ccc;
     /* Колір "ползунка" скролбару при наведенні */
 }
+
 //scrollbar

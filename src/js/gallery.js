@@ -4,16 +4,14 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 
-export function renderGallery(images) {
-  const galleryContainer = document.querySelector('.gallery');
-
-  galleryContainer.innerHTML = '';
+export function renderGallery(images, container) {
+  const galleryContainer = container || document.querySelector('.gallery'); // Використовуємо переданий контейнер або отримуємо контейнер за замовчуванням
 
   images.forEach((image) => {
     const photoCard = createPhotoCard(image);
     galleryContainer.appendChild(photoCard);
   });
- 
+
   const lightbox = new SimpleLightbox('.photo-card', {
     captionsData: 'alt',
   });
