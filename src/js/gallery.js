@@ -3,14 +3,26 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
 export function renderGallery(images, container) {
-  const galleryContainer = container || document.querySelector('.gallery'); // Використовуємо переданий контейнер або отримуємо контейнер за замовчуванням
+  const galleryContainer = container || document.querySelector('.gallery');
 
-  images.forEach((image) => {
+  if (!galleryContainer) {
+    console.error('Element with class "gallery" not found in the DOM.');
+    return;
+  }
+
+  galleryContainer.innerHTML = '';
+
+  // Відображати лише перші 40 фото
+  let galleryHTML = '';
+
+  for (let i = 0; i < Math.min(images.length, 100); i++) {
+    const image = images[i];
     const photoCard = createPhotoCard(image);
-    galleryContainer.appendChild(photoCard);
-  });
+    galleryHTML += photoCard.outerHTML;
+  }
+
+  galleryContainer.innerHTML = galleryHTML;
 
   const lightbox = new SimpleLightbox('.photo-card', {
     captionsData: 'alt',
@@ -29,7 +41,7 @@ function createPhotoCard(image) {
   img.alt = image.tags;
   img.loading = 'lazy';
 
- const infoDiv = document.createElement('div');
+  const infoDiv = document.createElement('div');
   infoDiv.classList.add('info');
   infoDiv.classList.add('hidden');
 
@@ -52,6 +64,6 @@ function createPhotoCard(image) {
 function createInfoItem(label, value) {
   const infoItem = document.createElement('p');
   infoItem.classList.add('info-item');
-infoItem.innerHTML = `<b>${label}:</b> ${value}`;
+  infoItem.innerHTML = `<b>${label}:</b> ${value}`;
   return infoItem;
 }

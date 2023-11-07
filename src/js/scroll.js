@@ -5,6 +5,7 @@ const api = new PixabayAPI();
 let loading = false;
 let maxImagesReached = false;
 let totalImages = 0;
+let displayedImagesCount = 0; // Змінна для підрахунку відображених картинок
 const gallery = document.querySelector('.gallery'); // Отримуємо контейнер для фотографій
 
 const loadNextImages = async () => {
@@ -20,11 +21,22 @@ const loadNextImages = async () => {
       const newImages = await api.fetchPhotos();
 
       if (newImages.length > 0) {
-        renderGallery(newImages, false); // Змінено другий параметр на false
+        const totalImagesBeforeLoad = totalImages;
         totalImages += newImages.length;
-        if (totalImages >= 40) {
-          maxImagesReached = true; // Позначаємо, що всі доступні зображення вже завантажено
+
+        
+        if (totalImages >= 100) {
+          maxImagesReached = true;
+          window.removeEventListener('scroll', loadNextImages); // Видаляємо обробник подій, щоб зупинити подальше завантаження
         }
+
+        // Підраховуємо кількість відображених картинок
+        displayedImagesCount += newImages.length;
+
+        
+     if (displayedImagesCount <= 100) {
+  renderGallery(newImages, false);
+}
       } else {
         maxImagesReached = true; // Позначаємо, що всі доступні зображення вже завантажено
       }
@@ -36,10 +48,8 @@ const loadNextImages = async () => {
 
 const clearGallery = () => {
   gallery.innerHTML = '';
+  displayedImagesCount = 0; // Скидаємо лічильник при очищенні галереї
 };
-
-window.addEventListener('scroll', loadNextImages);
-window.addEventListener('load', loadNextImages);
 
 // Оновлення галереї при новому пошуку
 const searchForm = document.querySelector('.search-form');
@@ -50,6 +60,7 @@ searchForm.addEventListener('submit', async (event) => {
   maxImagesReached = false;
   totalImages = 0;
   clearGallery(); // Очистити галерею перед новим пошуком
+  displayedImagesCount = 0; // Скидаємо лічильник при новому пошуку
   const newImages = await api.fetchPhotos();
   renderGallery(newImages, true);
 });

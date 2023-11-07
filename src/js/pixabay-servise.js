@@ -7,7 +7,8 @@ export class PixabayAPI {
 
   page = 1;
   query = null;
-  limit = 40;
+  limit = 100;
+  loadedImagesCount = 0;
 
   async fetchPhotos() {
     try {
@@ -24,9 +25,18 @@ export class PixabayAPI {
       });
 
       const data = response.data;
+      const imagesCount = data.hits.length;
 
-      if (data.hits.length === 0) {
+      
+      if (imagesCount === 0) {
         Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.');
+      } else {
+        this.loadedImagesCount += imagesCount;
+
+        if (this.loadedImagesCount >= this.limit) {
+          Notiflix.Notify.success(`Successfully loaded ${this.limit} photos`);
+          this.loadedImagesCount = 0; // Скидаємо лічильник
+        }
       }
 
       return data.hits;
