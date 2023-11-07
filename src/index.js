@@ -4,6 +4,7 @@ import './js/scroll.js';
 
 const api = new PixabayAPI();
 const searchForm = document.querySelector('.search-form');
+const scrollToTopButton = document.querySelector('.scroll-to-top'); // Отримайте кнопку "Повернутися на верх сторінки"
 
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -19,4 +20,15 @@ searchForm.addEventListener('submit', async (e) => {
 
   const images = await api.fetchPhotos();
   renderGallery(images);
+
+  if (images.length > 0) {
+    scrollToTopButton.style.display = 'block';
+  } else {
+    scrollToTopButton.style.display = 'none';
+  }
+});
+
+// Додайте обробник кліку на кнопку "Повернутися на верх сторінки"
+scrollToTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });

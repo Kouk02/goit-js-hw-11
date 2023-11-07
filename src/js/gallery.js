@@ -13,7 +13,6 @@ export function renderGallery(images, container) {
 
   galleryContainer.innerHTML = '';
 
-  // Відображати лише перші 40 фото
   let galleryHTML = '';
 
   for (let i = 0; i < Math.min(images.length, 100); i++) {
