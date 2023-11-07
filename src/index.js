@@ -28,7 +28,6 @@ searchForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Додайте обробник кліку на кнопку "Повернутися на верх сторінки"
 scrollToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });

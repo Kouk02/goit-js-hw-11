@@ -12,6 +12,8 @@ export class PixabayAPI {
 
   async fetchPhotos() {
     try {
+this.loadedImagesCount = 0;
+
       const response = await axios.get(this.#BASE_URL, {
         params: {
           key: this.#API_KEY,
@@ -33,13 +35,11 @@ export class PixabayAPI {
       } else {
         this.loadedImagesCount += imagesCount;
 
-        if (this.loadedImagesCount >= this.limit) {
-          Notiflix.Notify.success(`Successfully loaded ${this.limit} photos`);
-          this.loadedImagesCount = 0; // Скидаємо лічильник
-        }
+      Notiflix.Notify.success(`Successfully loaded ${this.loadedImagesCount} photos`);
       }
 
       return data.hits;
+
     } catch (error) {
       Notiflix.Notify.failure('An error occurred while fetching images. Please try again later.');
       throw error;
