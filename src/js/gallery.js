@@ -15,7 +15,7 @@ export function renderGallery(images, container) {
 
   let galleryHTML = '';
 
-  for (let i = 0; i < Math.min(images.length, 100); i++) {
+  for (let i = 0; i < Math.min(images.length, 40); i++) {
     const image = images[i];
     const photoCard = createPhotoCard(image);
     galleryHTML += photoCard.outerHTML;

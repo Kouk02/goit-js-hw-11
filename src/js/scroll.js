@@ -28,7 +28,7 @@ const loadNextImages = async () => {
 
         loadedImagesCount += newImages.length;
 
-        if (totalImages >= 100) {
+        if (totalImages >= 40) {
           maxImagesReached = true;
           window.removeEventListener('scroll', loadNextImages); // Видаляємо обробник подій, щоб зупинити подальше завантаження
         }
@@ -37,7 +37,7 @@ const loadNextImages = async () => {
         displayedImagesCount += newImages.length;
 
         
-     if (displayedImagesCount <= 100) {
+     if (displayedImagesCount <= 40) {
   renderGallery(newImages, false);
 }
       } else {

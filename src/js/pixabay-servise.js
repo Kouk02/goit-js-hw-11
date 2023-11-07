@@ -7,7 +7,7 @@ export class PixabayAPI {
 
   page = 1;
   query = null;
-  limit = 100;
+  limit = 40;
   loadedImagesCount = 0;
 
   async fetchPhotos() {
